@@ -1,7 +1,7 @@
 VERSION = 3
 PATCHLEVEL = 4
 SUBLEVEL = 49
-EXTRAVERSION = +
+EXTRAVERSION =
 NAME = Saber-toothed Squirrel
 
 # *DOCUMENTATION*
@@ -350,11 +350,27 @@ CHECK		= sparse
 
 CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
-CFLAGS_MODULE   =
-AFLAGS_MODULE   =
-LDFLAGS_MODULE  =
-CFLAGS_KERNEL	= -mcpu=cortex-a15 -mfpu=neon -ftree-vectorize
-AFLAGS_KERNEL	= -mcpu=cortex-a15 -mfpu=neon -ftree-vectorize
+MODFLAGS        = -DMODULE \
+		  -march=armv7-a \
+		  -mfpu=neon-vfpv4 \
+		  -mtune=cortex-a9 \
+		  -Os
+ifdef CONFIG_GCC_48_FIXES
+  MODFLAGS	+=	-fno-aggressive-loop-optimizations \
+			-Wno-sizeof-pointer-memaccess
+endif
+CFLAGS_MODULE   = $(MODFLAGS)
+AFLAGS_MODULE   = $(MODFLAGS)
+LDFLAGS_MODULE  = -T $(srctree)/scripts/module-common.lds
+CFLAGS_KERNEL	= -march=armv7-a \
+		  -mfpu=neon-vfpv4 \
+		  -mtune=cortex-a9 \
+		  -Os
+ifdef CONFIG_GCC_48_FIXES
+  CFLAGS_KERNEL	+=	-fno-aggressive-loop-optimizations \
+			-Wno-sizeof-pointer-memaccess
+endif
+AFLAGS_KERNEL	=
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
 
 
@@ -367,6 +383,9 @@ LINUXINCLUDE    := -I$(srctree)/arch/$(hdr-arch)/include \
 
 KBUILD_CPPFLAGS := -D__KERNEL__
 
+  KBUILD_CPPFLAGS	+=	-fno-aggressive-loop-optimizations \
+				-Wno-sizeof-pointer-memaccess
+
 KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-strict-aliasing -fno-common \
 		   -Werror-implicit-function-declaration \
@@ -374,6 +393,10 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-delete-null-pointer-checks
 		   -mtune=cortex-a15 -march=armv7-a -mfpu=neon \
 		   -ftree-vectorize
+
+  KBUILD_CFLAGS	+=	-fno-aggressive-loop-optimizations \
+			-Wno-sizeof-pointer-memaccess
+
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
 KBUILD_AFLAGS   := -D__ASSEMBLY__
@@ -599,6 +622,7 @@ endif
 
 ifdef CONFIG_DEBUG_INFO
 KBUILD_CFLAGS	+= -g
+KBUILD_CFLAGS	+=  -gdwarf-2
 KBUILD_AFLAGS	+= -gdwarf-2
 endif
 
@@ -988,6 +1012,7 @@ archprepare: archheaders archscripts prepare1 scripts_basic
 
 prepare0: archprepare FORCE
 	$(Q)$(MAKE) $(build)=.
+	$(Q)$(MAKE) $(build)=. missing-syscalls
 
 # All the preparing..
 prepare: prepare0
