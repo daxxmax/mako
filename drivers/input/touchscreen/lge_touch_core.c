@@ -33,6 +33,7 @@
 #include <linux/hotplug.h>
 #include <linux/pm.h>
 #include <linux/pm_runtime.h>
+#include <linux/cpu.h>
 
 #include <asm/atomic.h>
 #include <linux/gpio.h>
@@ -835,8 +836,8 @@ static void touch_input_report(struct lge_touch_data *ts)
 	input_sync(ts->input_dev);
 }
 
-#define TOUCH_BOOST_FREQ get_input_boost_freq()
 static struct cpufreq_policy *policy;
+#define TOUCH_BOOST_FREQ get_input_boost_freq()
 
 /*
  * Touch work function
@@ -848,14 +849,28 @@ static void touch_work_func(struct work_struct *work)
 	int int_pin = 0;
 	int next_work = 0;
 	int ret;
+	int cpu;
 	//static unsigned int x = 0;
 	//static unsigned int y = 0;
 	//static bool xy_lock = false;
 
-	if (policy->cur < TOUCH_BOOST_FREQ)
+	for_each_possible_cpu(cpu)
 	{
-		__cpufreq_driver_target(policy, TOUCH_BOOST_FREQ, 
-				CPUFREQ_RELATION_H);
+		if (cpu >= 2)
+			break;
+
+		ret = cpufreq_get_policy(policy, cpu);
+		if (ret) 
+		{
+			pr_info(KERN_WARNING "CPU%d - val%d", cpu, ret);
+			break;
+		}
+
+		if (policy->cur < TOUCH_BOOST_FREQ)
+		{
+			__cpufreq_driver_target(policy, TOUCH_BOOST_FREQ, 
+					CPUFREQ_RELATION_H);
+		}	
 	}
 
 	is_touching = true;
@@ -1980,8 +1995,6 @@ static int touch_probe(struct i2c_client *client,
 	struct lge_touch_data *ts;
 	int ret = 0;
 	int one_sec = 0;
-
-	policy = cpufreq_cpu_get(0);
 
 	if (unlikely(touch_debug_mask & DEBUG_TRACE))
 		TOUCH_DEBUG_MSG("\n");
