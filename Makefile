@@ -384,8 +384,8 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -ftree-vectorize \
                    -fno-aggressive-loop-optimizations \
                    -Wno-sizeof-pointer-memaccess \
-                   -funswitch-loops -floop-interchange \
-                   -floop-strip-mine -floop-block
+                   -floop-interchange -floop-strip-mine \
+                   -floop-block
 
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
