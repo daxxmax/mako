@@ -356,13 +356,20 @@ MODFLAGS        = -DMODULE \
 CFLAGS_MODULE   = $(MODFLAGS)
 AFLAGS_MODULE   = $(MODFLAGS)
 LDFLAGS_MODULE  = -T $(srctree)/scripts/module-common.lds
-CFLAGS_KERNEL   = -mfpu=neon-vfpv4 \
-                  -mtune=cortex-a15 \
-		  -mcpu=cortex-a15 \
-                  -O3 \
-                  -fno-aggressive-loop-optimizations \
-                  -Wno-sizeof-pointer-memaccess
-AFLAGS_KERNEL   = -mfpu=neon -ftree-vectorize
+CFLAGS_KERNEL   = -fgcse-lm -fgcse-sm -fsched-spec-load \
+                  -fforce-addr -ffast-math -fsingle-precision-constant \
+                  -mtune=cortex-a15 -marm -march=armv7-a \
+                  -mfpu=neon-vfpv4 -mvectorize-with-neon-quad \
+                  -ftree-vectorize -funroll-loops -Wno-sizeof-pointer-memaccess \
+                  -fno-aggressive-loop-optimizations -mcpu=cortex-a15 \
+                  -O3
+AFLAGS_KERNEL   = -fgcse-lm -fgcse-sm -fsched-spec-load \
+                  -fforce-addr -ffast-math -fsingle-precision-constant \
+                  -mtune=cortex-a15 -marm -march=armv7-a \
+                  -mfpu=neon-vfpv4 -mvectorize-with-neon-quad \
+                  -ftree-vectorize -funroll-loops -Wno-sizeof-pointer-memaccess \
+                  -fno-aggressive-loop-optimizations -mcpu=cortex-a15 \
+                  -O3
 
 # Use LINUXINCLUDE when you must reference the include/ directory.
 # Needed to be compatible with the O= option
@@ -378,14 +385,17 @@ KBUILD_CPPFLAGS := -D__KERNEL__ \
 KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-strict-aliasing -fno-common \
 		   -Werror-implicit-function-declaration \
-		   -Wno-format-security \
+		   -Wno-format-security -funsafe-math-optimizations \
 		   -fno-delete-null-pointer-checks
-		   -mfpu=neon \
-		   -ftree-vectorize \
+		   -mfpu=neon-vfpv4 -mvectorize-with-neon-quad \
+		   -ftree-vectorize -mcpu=cortex-a15 \
                    -fno-aggressive-loop-optimizations \
                    -Wno-sizeof-pointer-memaccess \
                    -floop-interchange -floop-strip-mine \
-                   -floop-block
+                   -floop-block -mno-unaligned-access \
+                   -fsingle-precision-constant -fpredictive-commoning -fipa-cp-clone \
+                   -fgcse-after-reload -pipe \
+                   -funroll-loops   
 
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
