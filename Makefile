@@ -382,7 +382,7 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
                    -floop-interchange -floop-strip-mine \
                    -floop-block -mno-unaligned-access \
                    -fsingle-precision-constant -fpredictive-commoning -fipa-cp-clone \
-                   -fgcse-after-reload -pipe \
+                   -fgcse-after-reload -pipe -fvect-cost-model \
                    -funswitch-loops -flto -fno-toplevel-reorder
 
 KBUILD_AFLAGS_KERNEL :=
