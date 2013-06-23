@@ -348,7 +348,8 @@ CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
 MODFLAGS        = -DMODULE \
                   -mfpu=neon-vfpv4 \
-                  -mtune=cortex-a9 \
+                  -mtune=cortex-a15 \
+		  -mcpu=cortex-a15 \
                   -O3 \
                   -fno-aggressive-loop-optimizations \
                   -Wno-sizeof-pointer-memaccess
@@ -356,7 +357,8 @@ CFLAGS_MODULE   = $(MODFLAGS)
 AFLAGS_MODULE   = $(MODFLAGS)
 LDFLAGS_MODULE  = -T $(srctree)/scripts/module-common.lds
 CFLAGS_KERNEL   = -mfpu=neon-vfpv4 \
-                  -mtune=cortex-a9 \
+                  -mtune=cortex-a15 \
+		  -mcpu=cortex-a15 \
                   -O3 \
                   -fno-aggressive-loop-optimizations \
                   -Wno-sizeof-pointer-memaccess
