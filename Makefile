@@ -356,20 +356,8 @@ MODFLAGS        = -DMODULE \
 CFLAGS_MODULE   = $(MODFLAGS)
 AFLAGS_MODULE   = $(MODFLAGS)
 LDFLAGS_MODULE  = -T $(srctree)/scripts/module-common.lds
-CFLAGS_KERNEL   = -fgcse-lm -fgcse-sm -fsched-spec-load \
-                  -fforce-addr -ffast-math -fsingle-precision-constant \
-                  -mtune=cortex-a15 -marm -march=armv7-a \
-                  -mfpu=neon-vfpv4 -mvectorize-with-neon-quad \
-                  -ftree-vectorize -funroll-loops -Wno-sizeof-pointer-memaccess \
-                  -fno-aggressive-loop-optimizations -mcpu=cortex-a15 \
-                  -O3
-AFLAGS_KERNEL   = -fgcse-lm -fgcse-sm -fsched-spec-load \
-                  -fforce-addr -ffast-math -fsingle-precision-constant \
-                  -mtune=cortex-a15 -marm -march=armv7-a \
-                  -mfpu=neon-vfpv4 -mvectorize-with-neon-quad \
-                  -ftree-vectorize -funroll-loops -Wno-sizeof-pointer-memaccess \
-                  -fno-aggressive-loop-optimizations -mcpu=cortex-a15 \
-                  -O3
+CFLAGS_KERNEL   = -mcpu=cortex-a15 -mfpu=neon-vfpv4 -ftree-vectorize
+AFLAGS_KERNEL   = -mcpu=cortex-a15 -mfpu=neon-vfpv4 -ftree-vectorize
 
 # Use LINUXINCLUDE when you must reference the include/ directory.
 # Needed to be compatible with the O= option
@@ -395,7 +383,7 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
                    -floop-block -mno-unaligned-access \
                    -fsingle-precision-constant -fpredictive-commoning -fipa-cp-clone \
                    -fgcse-after-reload -pipe \
-                   -funroll-loops   
+                   -funswitch-loops   
 
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
