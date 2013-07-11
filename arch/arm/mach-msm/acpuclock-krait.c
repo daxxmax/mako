@@ -992,7 +992,7 @@ static int __init select_freq_plan(u32 qfprom_phys)
 {
 	void __iomem *qfprom_base;
 	u32 pte_efuse, pvs, tbl_idx;
-	char *pvs_names[] = { "Slow", "Nominal", "Fast", "Faster", "Unknown" };
+	char *pvs_names[] = { "SLOW", "NOMINAL", "FAST", "FASTER", "UNKNOWN" };
 
 	qfprom_base = ioremap(qfprom_phys, SZ_256);
 	/* Select frequency tables. */
