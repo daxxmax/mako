@@ -863,7 +863,7 @@ ssize_t acpuclk_set_vdd(char *buf)
 	unsigned int cur_volt;
 	char size_cur[get_num_freqs()];
 	int i;
-    int ret = 0;
+        int ret = 0;
 
 	if (!buf)
 		return -EINVAL;
