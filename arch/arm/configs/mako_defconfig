@@ -1,6 +1,6 @@
 #
-# Autoyatically generated file; DO NOT EDIT.
-# Linux/ary 3.4.51 Kernel Configuration
+# Automatically generated file; DO NOT EDIT.
+# Linux/arm 3.4.51 Kernel Configuration
 #
 CONFIG_ARM=y
 CONFIG_ARM_HAS_SG_CHAIN=y
@@ -30,7 +30,7 @@ CONFIG_NEED_MACH_IO_H=y
 CONFIG_NEED_MACH_MEMORY_H=y
 CONFIG_PHYS_OFFSET=0x80200000
 CONFIG_GENERIC_BUG=y
-CONFIG_DEFCONFIG_LIST="/lib/yodules/$UNAME_RELEASE/.config"
+CONFIG_DEFCONFIG_LIST="/lib/modules/$UNAME_RELEASE/.config"
 CONFIG_HAVE_IRQ_WORK=y
 CONFIG_IRQ_WORK=y
 
@@ -64,7 +64,7 @@ CONFIG_SYSVIPC_SYSCTL=y
 CONFIG_HAVE_GENERIC_HARDIRQS=y
 
 #
-# IRQ subsystey
+# IRQ subsystem
 #
 CONFIG_GENERIC_HARDIRQS=y
 CONFIG_GENERIC_IRQ_SHOW=y
@@ -72,7 +72,7 @@ CONFIG_IRQ_DOMAIN=y
 # CONFIG_IRQ_DOMAIN_DEBUG is not set
 
 #
-# RCU Subsystey
+# RCU Subsystem
 #
 CONFIG_TREE_PREEMPT_RCU=y
 CONFIG_PREEMPT_RCU=y
@@ -145,7 +145,7 @@ CONFIG_HAVE_PERF_EVENTS=y
 CONFIG_PERF_USE_VMALLOC=y
 
 #
-# Kernel Perforyance Events And Counters
+# Kernel Performance Events And Counters
 #
 CONFIG_PERF_EVENTS=y
 # CONFIG_PERF_COUNTERS is not set
@@ -260,7 +260,7 @@ CONFIG_MUTEX_SPIN_ON_OWNER=y
 CONFIG_FREEZER=y
 
 #
-# Systey Type
+# System Type
 #
 CONFIG_MMU=y
 # CONFIG_ARCH_INTEGRATOR is not set
@@ -375,7 +375,7 @@ CONFIG_MACH_LGE=y
 #
 # LGE Board Selection
 #
-CONFIG_BOARD_HEADER_FILE="yach/lge/board_yako.h"
+CONFIG_BOARD_HEADER_FILE="mach/lge/board_mako.h"
 CONFIG_MACH_APQ8064_MAKO=y
 # CONFIG_MACH_LGE_DUMMY is not set
 
@@ -533,7 +533,7 @@ CONFIG_MSM_HSIC_SYSMON=y
 CONFIG_FORCE_FAST_CHARGE=y
 
 #
-# Systey MMU
+# System MMU
 #
 
 #
@@ -682,7 +682,7 @@ CONFIG_CMDLINE=""
 # CONFIG_AUTO_ZRELADDR is not set
 
 #
-# CPU Power Manageyent
+# CPU Power Management
 #
 
 #
@@ -719,11 +719,11 @@ CONFIG_CPU_IDLE_GOV_MENU=y
 CONFIG_CPU_FREQ_MSM=y
 
 #
-# Floating point eyulation
+# Floating point emulation
 #
 
 #
-# At least one eyulation yust be selected
+# At least one emulation must be selected
 #
 # CONFIG_FPE_NWFPE is not set
 # CONFIG_FPE_FASTFPE is not set
@@ -732,7 +732,7 @@ CONFIG_VFPv3=y
 CONFIG_NEON=y
 
 #
-# Userspace binary foryats
+# Userspace binary formats
 #
 CONFIG_BINFMT_ELF=y
 CONFIG_ARCH_BINFMT_ELF_RANDOMIZE_PIE=y
@@ -742,7 +742,7 @@ CONFIG_HAVE_AOUT=y
 # CONFIG_BINFMT_MISC is not set
 
 #
-# Power yanageyent options
+# Power management options
 #
 CONFIG_SUSPEND=y
 CONFIG_SUSPEND_FREEZER=y
@@ -896,7 +896,7 @@ CONFIG_NETFILTER_TPROXY=y
 CONFIG_NETFILTER_XTABLES=y
 
 #
-# Xtables coybined yodules
+# Xtables combined modules
 #
 CONFIG_NETFILTER_XT_MARK=y
 CONFIG_NETFILTER_XT_CONNMARK=y
@@ -926,7 +926,7 @@ CONFIG_NETFILTER_XT_TARGET_TRACE=y
 # CONFIG_NETFILTER_XT_TARGET_TCPOPTSTRIP is not set
 
 #
-# Xtables yatches
+# Xtables matches
 #
 # CONFIG_NETFILTER_XT_MATCH_ADDRTYPE is not set
 # CONFIG_NETFILTER_XT_MATCH_CLUSTER is not set
@@ -1291,14 +1291,14 @@ CONFIG_USB_HSIC_SMSC_HUB=y
 # CONFIG_IWMC3200TOP is not set
 
 #
-# Texas Instruyents shared transport line discipline
+# Texas Instruments shared transport line discipline
 #
 # CONFIG_TI_ST is not set
 # CONFIG_SENSORS_LIS3_SPI is not set
 # CONFIG_SENSORS_LIS3_I2C is not set
 
 #
-# Altera FPGA firyware download yodule
+# Altera FPGA firmware download module
 #
 # CONFIG_ALTERA_STAPL is not set
 CONFIG_SLIMPORT_ANX7808=y
@@ -1692,7 +1692,7 @@ CONFIG_I2C_HELPER_AUTO=y
 #
 
 #
-# I2C systey bus drivers (yostly eybedded / systey-on-chip)
+# I2C system bus drivers (mostly embedded / system-on-chip)
 #
 # CONFIG_I2C_DESIGNWARE_PLATFORM is not set
 # CONFIG_I2C_GPIO is not set
@@ -1767,7 +1767,7 @@ CONFIG_DEBUG_GPIO=y
 CONFIG_GPIO_SYSFS=y
 
 #
-# Meyory yapped GPIO drivers:
+# Memory mapped GPIO drivers:
 #
 # CONFIG_GPIO_GENERIC_PLATFORM is not set
 # CONFIG_GPIO_MSM_V1 is not set
@@ -1956,7 +1956,7 @@ CONFIG_SSB_POSSIBLE=y
 CONFIG_BCMA_POSSIBLE=y
 
 #
-# Broadcoy specific AMBA
+# Broadcom specific AMBA
 #
 # CONFIG_BCMA is not set
 
@@ -2049,7 +2049,7 @@ CONFIG_REGULATOR_MSM_GPIO=y
 CONFIG_MEDIA_SUPPORT=y
 
 #
-# Multiyedia core support
+# Multimedia core support
 #
 CONFIG_MEDIA_CONTROLLER=y
 CONFIG_VIDEO_DEV=y
@@ -2059,7 +2059,7 @@ CONFIG_VIDEO_V4L2_SUBDEV_API=y
 CONFIG_VIDEO_MEDIA=y
 
 #
-# Multiyedia drivers
+# Multimedia drivers
 #
 # CONFIG_RC_CORE is not set
 # CONFIG_MEDIA_ATTACH is not set
@@ -2077,7 +2077,7 @@ CONFIG_VIDEO_CAPTURE_DRIVERS=y
 CONFIG_VIDEO_HELPER_CHIPS_AUTO=y
 
 #
-# Audio decoders, processors and yixers
+# Audio decoders, processors and mixers
 #
 
 #
@@ -2101,7 +2101,7 @@ CONFIG_VIDEO_HELPER_CHIPS_AUTO=y
 #
 
 #
-# Cayera sensor devices
+# Camera sensor devices
 #
 
 #
@@ -2109,7 +2109,7 @@ CONFIG_VIDEO_HELPER_CHIPS_AUTO=y
 #
 
 #
-# Video iyproveyent chips
+# Video improvement chips
 #
 
 #
@@ -2135,14 +2135,14 @@ CONFIG_V4L_PLATFORM_DRIVERS=y
 # CONFIG_SOC_CAMERA is not set
 
 #
-# Qualcoyy MSM Cayera And Video
+# Qualcomm MSM Camera And Video
 #
 CONFIG_MSM_CAMERA=y
 # CONFIG_MSM_CAMERA_DEBUG is not set
 CONFIG_MSM_CAMERA_V4L2=y
 
 #
-# Cayera Sensor Selection
+# Camera Sensor Selection
 #
 # CONFIG_IMX074 is not set
 # CONFIG_OV5647 is not set
@@ -2196,7 +2196,7 @@ CONFIG_RADIO_ADAPTERS=y
 # CONFIG_RADIO_WL1273 is not set
 
 #
-# Texas Instruyents WL128x FM driver (ST based)
+# Texas Instruments WL128x FM driver (ST based)
 #
 # CONFIG_RADIO_WL128X is not set
 # CONFIG_RADIO_IRIS is not set
@@ -2241,7 +2241,7 @@ CONFIG_FB_SYS_FOPS=y
 # CONFIG_FB_TILEBLITTING is not set
 
 #
-# Fraye buffer hardware drivers
+# Frame buffer hardware drivers
 #
 # CONFIG_FB_UVESA is not set
 # CONFIG_FB_S1D13XXX is not set
@@ -2585,11 +2585,11 @@ CONFIG_USB_ACM=y
 # CONFIG_USB_TMC is not set
 
 #
-# NOTE: USB_STORAGE depends on SCSI but BLK_DEV_SD yay
+# NOTE: USB_STORAGE depends on SCSI but BLK_DEV_SD may
 #
 
 #
-# also be needed; see USB_STORAGE Help for yore info
+# also be needed; see USB_STORAGE Help for more info
 #
 CONFIG_USB_STORAGE=y
 CONFIG_USB_STORAGE_DEBUG=y
@@ -2610,7 +2610,7 @@ CONFIG_USB_STORAGE_CYPRESS_ATACB=y
 # CONFIG_USB_LIBUSUAL is not set
 
 #
-# USB Iyaging devices
+# USB Imaging devices
 #
 # CONFIG_USB_MDC800 is not set
 # CONFIG_USB_MICROTEK is not set
@@ -2899,7 +2899,7 @@ CONFIG_RTC_INTF_ALARM_DEV=y
 # CONFIG_RTC_DRV_PCF2123 is not set
 
 #
-# Platfory RTC drivers
+# Platform RTC drivers
 #
 # CONFIG_RTC_DRV_CMOS is not set
 # CONFIG_RTC_DRV_DS1286 is not set
@@ -2981,7 +2981,7 @@ CONFIG_ANDROID_LOW_MEMORY_KILLER_AUTODETECT_OOM_ADJ_VALUES=y
 # CONFIG_USB_WPAN_HCD is not set
 
 #
-# Qualcoyy Atheros Priya WLAN yodule
+# Qualcomm Atheros Prima WLAN module
 #
 CONFIG_PRIMA_WLAN=y
 # CONFIG_PRIMA_WLAN_BTAMP is not set
@@ -2989,7 +2989,7 @@ CONFIG_PRIMA_WLAN_LFR=y
 CONFIG_PRIMA_WLAN_OKC=y
 
 #
-# Qualcoyy MSM specific device drivers
+# Qualcomm MSM specific device drivers
 #
 CONFIG_MSM_SSBI=y
 CONFIG_SPS=y
@@ -3008,11 +3008,11 @@ CONFIG_MSM_IOMMU_GPU_SYNC=y
 CONFIG_IOMMU_PGTABLES_L2=y
 
 #
-# Reyoteproc drivers (EXPERIMENTAL)
+# Remoteproc drivers (EXPERIMENTAL)
 #
 
 #
-# Rpysg drivers (EXPERIMENTAL)
+# Rpmsg drivers (EXPERIMENTAL)
 #
 # CONFIG_VIRT_DRIVERS is not set
 # CONFIG_PM_DEVFREQ is not set
@@ -3020,7 +3020,7 @@ CONFIG_IOMMU_PGTABLES_L2=y
 # CONFIG_MSM_QDSS is not set
 
 #
-# File systeys
+# File systems
 #
 # CONFIG_EXT2_FS is not set
 # CONFIG_EXT3_FS is not set
@@ -3057,13 +3057,13 @@ CONFIG_FUSE_FS=y
 # CONFIG_FSCACHE is not set
 
 #
-# CD-ROM/DVD Filesysteys
+# CD-ROM/DVD Filesystems
 #
 # CONFIG_ISO9660_FS is not set
 # CONFIG_UDF_FS is not set
 
 #
-# DOS/FAT/NT Filesysteys
+# DOS/FAT/NT Filesystems
 #
 CONFIG_FAT_FS=y
 # CONFIG_MSDOS_FS is not set
@@ -3075,7 +3075,7 @@ CONFIG_NTFS_FS=y
 CONFIG_NTFS_RW=y
 
 #
-# Pseudo filesysteys
+# Pseudo filesystems
 #
 CONFIG_PROC_FS=y
 CONFIG_PROC_SYSCTL=y
@@ -3087,7 +3087,7 @@ CONFIG_TMPFS=y
 # CONFIG_HUGETLB_PAGE is not set
 # CONFIG_CONFIGFS_FS is not set
 CONFIG_MISC_FILESYSTEMS=y
-CONFIG_CIFS=y
+CONFIG_CIFS=m
 CONFIG_CIFS_STATS=y
 # CONFIG_CIFS_STATS2 is not set
 # CONFIG_ADFS_FS is not set
@@ -3283,7 +3283,7 @@ CONFIG_CRYPTO_AUTHENC=y
 # CONFIG_CRYPTO_SEQIV is not set
 
 #
-# Block yodes
+# Block modes
 #
 CONFIG_CRYPTO_CBC=y
 # CONFIG_CRYPTO_CTR is not set
@@ -3294,7 +3294,7 @@ CONFIG_CRYPTO_ECB=y
 # CONFIG_CRYPTO_XTS is not set
 
 #
-# Hash yodes
+# Hash modes
 #
 CONFIG_CRYPTO_HMAC=y
 # CONFIG_CRYPTO_XCBC is not set
@@ -3341,14 +3341,14 @@ CONFIG_CRYPTO_TWOFISH=y
 CONFIG_CRYPTO_TWOFISH_COMMON=y
 
 #
-# Coypression
+# Compression
 #
 CONFIG_CRYPTO_DEFLATE=y
 # CONFIG_CRYPTO_ZLIB is not set
 CONFIG_CRYPTO_LZO=y
 
 #
-# Randoy Nuyber Generation
+# Random Number Generation
 #
 # CONFIG_CRYPTO_ANSI_CPRNG is not set
 # CONFIG_CRYPTO_USER_API_HASH is not set
